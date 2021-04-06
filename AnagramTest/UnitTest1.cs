@@ -33,5 +33,23 @@ namespace AnagramTest
 
             Assert.AreEqual<bool>(false, obj.AnagramStrStr(input, sample));
         }
+        
+        [TestMethod]
+        public void StraightTest4()
+        {
+            string input = "bag", sample = "gabish";
+            AnagramTool obj = new AnagramTool();
+
+            Assert.AreEqual<bool>(true, obj.AnagramStrStr(input, sample));
+        }
+
+        [TestMethod]
+        public void StraightTest5()
+        {
+            string input = "bbb", sample = "aaabbbssss";
+            AnagramTool obj = new AnagramTool();
+
+            Assert.AreEqual<bool>(true, obj.AnagramStrStr(input, sample));
+        }
     }
 }
