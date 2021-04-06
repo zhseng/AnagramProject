@@ -10,12 +10,32 @@ namespace Anagram
     {
         public bool AnagramStrStr(string input, string sample)
         {
-            bool result = false;
+            bool result = true, matchStart = false;
+            
+            List<char> sampleSplit = sample.ToList<char>();
 
-            result = sample.ToLower().Contains(input.ToLower());
+            foreach (char rowSample in sampleSplit)
+            {
+                if(string.IsNullOrEmpty(input))
+                {
+                    break;
+                }
+                else if(input.Contains(rowSample))
+                {
+                    if(!matchStart)
+                        matchStart = true;
 
-            if (!result)
-                result = sample.ToLower().Contains(new string(input.ToLower().Reverse().ToArray()));
+                    input = input.Remove(input.IndexOf(rowSample.ToString()), 1);
+                }
+                else
+                {
+                    if(matchStart)
+                    {
+                        result = false;
+                        break;
+                    }
+                }
+            }
 
             return result;
         }
